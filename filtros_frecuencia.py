@@ -71,7 +71,7 @@ write("pasa_bajas.wav", frecuencia_muestreo, pasa_bajas_data.astype(np.int16))
 detiene_bandas = transformada.copy()
 #aplicar 2 filtros
 #detiene_bandas = pasa_bajas.copy()
-indices = ((frecuencias > 500) & (frecuencias < 1000))
+indices = ((frecuencias > 700) & (frecuencias < 1200))
 detiene_bandas[indices] *= 0
 detiene_bandas_data = np.fft.irfft(detiene_bandas)
 
@@ -87,7 +87,7 @@ write("detiene_bandas.wav", frecuencia_muestreo, detiene_bandas_data.astype(np.i
 
 #Filtro pasa altas
 pasa_altas = transformada.copy()
-pasa_altas[frecuencias < 400] *= 0
+pasa_altas[frecuencias < 600] *= 0
 
 ejes[1,3].plot(frecuencias, np.abs(pasa_altas), label = "Espectro filtrado, pasa altas")
 ejes[1,3].legend()
